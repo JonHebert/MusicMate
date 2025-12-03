@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MusicMate Login</title>
+<style>
+body{margin:0;padding:0;background:linear-gradient(135deg,#5a2ca0,#7d3cff);height:100vh;display:flex;justify-content:center;align-items:center;font-family:Arial,sans-serif;}
+.login-container{background:white;border-radius:20px;padding:40px;width:350px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,0.2);}
+.logo{width:110px;margin-bottom:20px;}
+h2{margin-bottom:25px;color:#4a148c;font-weight:700;letter-spacing:1px;}
+input{width:90%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #aaa;font-size:16px;}
+button{width:95%;padding:12px;background:#7d3cff;color:white;border:none;border-radius:10px;font-size:17px;margin-top:15px;cursor:pointer;transition:0.2s;}
+button:hover{background:#652dc1;}
+.error{color:red;margin-top:10px;display:none;}
+</style>
+</head>
+<body>
+<div class="login-container">
+<img src="assets/logo.png" class="logo" alt="MusicMate Logo">
+<h2>MusicMate</h2>
+<input type="text" id="username" placeholder="Username" />
+<input type="password" id="password" placeholder="Password" />
+<button onclick="login()">Login</button>
+<p id="error-msg" class="error">Invalid username or password.</p>
+</div>
+<script>
+function login(){
+ const user=document.getElementById("username").value;
+ const pass=document.getElementById("password").value;
+ if(user==="Admin" && pass==="password12345"){
+   window.location.href="home.html";
+ } else {
+   document.getElementById("error-msg").style.display="block";
+ }
+}
+</script>
+</body>
+</html>
