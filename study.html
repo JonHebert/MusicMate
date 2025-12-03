@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Music Mate</title>
+    <link rel="stylesheet" href="study.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Borel&family=Markazi+Text:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+<header class="head"> 
+    <a href="home.html" class="logo">Music Mate</a>
+   
+    <navbar class="nav"> 
+        <a href="home.html"> Home</a> 
+        <a href="study.html"> Study Mode</a>
+        <a href="#"> Library</a>
+        <a href="#"> About</a>
+    </navbar>
+    
+</header>
+
+
+   <div class="block1"> 
+        <h2 class="text1"> Study mode</h2>
+   </div>
+
+<div class="block2"> 
+
+        <div class="block3"> 
+            <img id="cover" alt="Cover image" class="cover-img" />
+        </div>
+        
+        <div class="player-wrapper">
+          <div class="player-card"> </div>
+
+        <div class="audio-controls">
+           <audio id="player" controls></audio>
+
+            <div class="buttons">
+              <button id="prev">⏮</button>
+              <button id="play-pause">⏯</button>
+              <button id="pause"> </button>
+              <button id="next">⏭</button>
+            </div>
+        </div>
+ </div>
+
+    
+
+    </div>
+    
+    <script>
+      let songs = [];
+      let currentIndex = 0;
+
+      const cover = document.getElementById("cover");
+      const player = document.getElementById("player");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      const playPauseBtn = document.getElementById("play-pause");
+
+      function loadSong(index) {
+        const song = songs[index];
+        if (!song) return;
+
+        cover.src = song.cover;
+        player.src = song.file;
+
+        // try to play (may need a click first depending on browser)
+        player.play().catch((err) => {
+          console.log("Autoplay blocked until user interacts:", err);
+        });
+      }
+
+      // Fetch songs from your API
+      fetch("/api/songs")
+        .then((res) => res.json())
+        .then((data) => {
+          songs = data;
+          if (songs.length > 0) {
+            loadSong(0);
+          } else {
+            console.log("No songs returned from API");
+          }
+        })
+        .catch((err) => console.error("Error loading songs:", err));
+
+      prevBtn.addEventListener("click", () => {
+        if (!songs.length) return;
+        currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+        loadSong(currentIndex);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (!songs.length) return;
+        currentIndex = (currentIndex + 1) % songs.length;
+        loadSong(currentIndex);
+      });
+
+      playPauseBtn.addEventListener("click", () => {
+        if (player.paused) {
+          player.play();
+        } else {
+          player.pause();
+        }
+      });
+    </script>
+</body>
+</html>

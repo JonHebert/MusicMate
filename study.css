@@ -1,0 +1,124 @@
+*{
+    margin: 0;  
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body{
+    border: 5px solid rgb(0, 0, 0);
+    margin-top: 70px;
+    background-color: rgb(196, 107, 180);
+    height: auto;
+    width: 100vw;
+  }
+  
+  .head{
+    background-color: rgb(26, 26, 26);
+    height:70px;
+    position:fixed;
+    top: 0;
+    left:0;
+    padding: 20px 50px;
+    width: 100%;
+    z-index: 100;
+    border: 5px solid rgb(205, 255, 214);
+    display:flex;
+    justify-content: space-between;
+    
+  }
+  
+  .logo  {
+    color: azure;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 5px solid white;
+    height: fit-content;
+
+  }
+ 
+
+  .nav a{
+    position:relative;
+    text-decoration: none;
+    color: azure;
+    font-family: sans-serif;
+    font-size: 20px;
+    margin: 20px;
+    font-weight: 500;
+    height:fit-content;
+  }
+
+.nav a::before {
+    content: '';
+    background: rgb(255, 196, 250);
+    position:absolute;
+    top:100%;
+    left:0;
+    width: 0;
+    height: 2px;
+    transition: .3s;
+  }
+  .nav a:hover::before {
+  
+    width: 100%;
+  }
+  
+  .block1{
+    border: 5px solid rgb(158, 157, 250);
+    height:20vh;
+    width:100;
+    font-family: sans-serif;
+    background-color: rgb(105, 51, 180);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px; 
+    border-radius: 10px;
+  }
+ 
+  .block2{
+    border: 5px solid rgb(157, 250, 176);
+    height: 80vh;
+    background-color: rgb(176, 199, 191);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
+  }
+  
+  .block3 img{
+   width: 350px;
+   height:350px;
+   border: 5px solid rgb(1, 208, 255);
+   background-color: rgb(99, 167, 197);
+   border-radius: 20px;
+   margin-top: -120px;
+  }
+ 
+
+  .block3{
+    margin:50px
+
+  }
+.player-wrapper{
+  /*border:5px solid black;*/
+}
+.buttons{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.buttons button{
+ width:50px;
+ height:50px;
+ background-color: transparent;
+ border:none;
+ font-size: 30px;
+ color: aliceblue;
+}
