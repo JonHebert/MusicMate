@@ -1,43 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Music Mate</title>
-    <link rel="stylesheet" href="home.css" >
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MusicMate</title>
+<link rel="stylesheet" href="home.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-
-<header class="head"> 
-    <a href="home.html" class="logo">Music Mate</a>
-   
-    <navbar class="nav"> 
-        <a href="home.html"> Home</a> 
-        <a href="study.html"> Study Mode</a>
-        <a href="#"> Library</a>
-        <a href="#"> About</a>
-    </navbar>
-    
+<!-- Navbar -->
+<header class="navbar">
+  <div class="logo-area">
+    <div class="logo-icon">♪</div>
+    <span class="logo-text">MusicMate</span>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn-gradient show-login">Login / Sign Up</button>
+    <button class="icon-btn toggle-dark"><i class="fa-solid fa-moon"></i></button>
+    <button class="icon-btn toggle-sidebar"><i class="fa-solid fa-bars"></i></button>
+  </div>
 </header>
 
-<div class="block1"> 
-    <div class="text">
-        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere vero minus consectetur esse laudantium similique, exercitationem suscipit! Est laboriosam qui distinctio itaque nobis, odit, doloribus ullam ut dolorem modi quos?</p>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-left">
+      <div class="small-tag">Your Music, Simplified ✨</div>
+      <h1>Welcome to MusicMate</h1>
+      <p>Organize playlists, study with focus, and enjoy your favorite tracks seamlessly.</p>
+      <div class="hero-buttons">
+        <button class="btn-gradient show-login">Get Started</button>
+        <button class="btn-outline" id="scrollFeatures">Learn More</button>
+      </div>
     </div>
-
-    <div class="image"> 
-        <img src="doll.jpg"> 
+    <div class="hero-right">
+      <div class="hero-icon" id="musicLogo">♪</div>
     </div>
+  </div>
+</section>
 
+<!-- Features -->
+<section class="features" id="features">
+  <div class="section-header">
+    <h2>Everything You Need</h2>
+    <p>All the tools to enjoy and manage your music</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon">🎵</div><h3>Build Playlists</h3><p>Create and customize playlists easily.</p></div>
+    <div class="feature-card"><div class="feature-icon">⏱️</div><h3>Study Mode</h3><p>Focus with a Pomodoro timer built in.</p></div>
+    <div class="feature-card"><div class="feature-icon">📤</div><h3>Share Everything</h3><p>Share your playlists with friends instantly.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔍</div><h3>Smart Search</h3><p>Find tracks, artists, and playlists faster.</p></div>
+  </div>
+</section>
 
+<!-- Fixed Login Panel -->
+<div class="login-panel">
+  <h2>Login</h2>
+  <input type="email" placeholder="Email" id="loginEmail"/>
+  <input type="password" placeholder="Password" id="loginPassword"/>
+  <button id="loginSubmit">Login</button>
+  <div class="switch-auth">
+    Don't have an account?<br>
+    <span id="showSignup" class="auth-link">Sign up</span>
+  </div>
 </div>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/onPUVEAcxLs?si=AWbZX5T5m4Gv44MW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aKI1fHOmCRg?si=pGLWQHTdrH0T9egT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- Fixed Signup Panel -->
+<div class="signup-panel">
+  <h2>Sign Up</h2>
+  <input type="text" placeholder="Name" id="signupName"/>
+  <input type="email" placeholder="Email" id="signupEmail"/>
+  <input type="password" placeholder="Password" id="signupPassword"/>
+  <button id="signupSubmit">Sign Up</button>
+  <div class="switch-auth">
+    Already have an account?<br>
+    <span id="showLogin" class="auth-link">Login</span>
+  </div>
+</div>
 
+<!-- Settings Modal -->
+<div class="modal settings-modal">
+  <div class="modal-content">
+    <div class="tabs">
+      <button data-tab="timer" class="active">Study Timer</button>
+      <button data-tab="calendar">Calendar</button>
+      <button data-tab="settings">Settings</button>
+    </div>
+    <div id="timerPanel" class="tab-panel">
+      <div class="pomodoro-slider">
+        <div class="pomodoro-circle">
+          <div class="pomodoro-pulse"></div>
+          <div class="pomodoro-fill" id="pomFill"></div>
+        </div>
+        <div class="pomodoro-time" id="pomTime">25:00</div>
+        <div class="pom-buttons">
+          <button id="startPom">Start</button>
+          <button id="pausePom">Pause</button>
+          <button id="resetPom">Reset</button>
+        </div>
+        <div class="pom-presets">
+          <button class="preset-btn" data-minutes="1">1 min</button>
+          <button class="preset-btn" data-minutes="10">10 min</button>
+          <button class="preset-btn active" data-minutes="25">25 min</button>
+          <button class="preset-btn" data-minutes="45">45 min</button>
+          <button class="preset-btn" data-minutes="60">60 min</button>
+        </div>
+      </div>
+    </div>
+    <div id="calendarPanel" class="tab-panel hidden">
+      <h3>Study Events</h3>
+      <div class="calendar-form">
+        <input type="text" id="eventName" placeholder="Event name" />
+        <input type="text" id="eventUrl" placeholder="Moodle URL (optional)" />
+        <button id="addEvent" class="add-event-btn">Add Event</button>
+      </div>
+      <ul id="eventList" class="event-list"></ul>
+    </div>
+    <div id="settingsPanel" class="tab-panel hidden">
+      <h3>Preferences</h3>
+      <div class="settings-list">
+        <label class="setting-item">
+          <span>Notifications</span>
+          <input type="checkbox" id="notifications">
+        </label>
+        <label class="setting-item">
+          <span>Sound Effects</span>
+          <input type="checkbox" id="soundEffects">
+        </label>
+        <label class="setting-item">
+          <span>Reminders</span>
+          <input type="checkbox" id="reminders">
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- Sidebar -->
+<aside class="sidebar">
+  <nav class="menu-list">
+    <a href="#features">Study Mode</a>
+    <a href="#features">Library</a>
+    <button id="openSettingsSidebar" class="sidebar-btn">Settings</button>
+    <a href="#features">About</a>
+  </nav>
+</aside>
 
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>♪ MusicMate</h4>
+      <p>All rights reserved © 2025</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const settingsModal=document.querySelector('.settings-modal');
+const sidebar=document.querySelector('.sidebar');
+const loginPanel=document.querySelector('.login-panel');
+const signupPanel=document.querySelector('.signup-panel');
+const toggleDark=document.querySelector('.toggle-dark');
+const toggleSidebar=document.querySelector('.toggle-sidebar');
+const openSettingsSidebar=document.getElementById('openSettingsSidebar');
+const musicLogo=document.getElementById('musicLogo');
+const loginButtons=document.querySelectorAll('.show-login');
+let darkMode=false;
+
+// Dark Mode
+toggleDark.addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  darkMode=!darkMode;
+  toggleDark.innerHTML=darkMode?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>';
+});
+
+// Login Panel Toggle
+loginButtons.forEach(btn=>{
+  btn.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    sidebar.classList.remove('fade-in');
+    signupPanel.classList.remove('fade-in');
+    
+    // Check last auth panel
+    const lastAuthPanel = localStorage.getItem('lastAuthPanel') || 'login';
+    if(lastAuthPanel === 'signup'){
+      signupPanel.classList.toggle('fade-in');
+      if(signupPanel.classList.contains('fade-in')){
+        document.body.style.overflow='hidden';
+      } else {
+        document.body.style.overflow='';
+      }
+    } else {
+      loginPanel.classList.toggle('fade-in');
+      if(loginPanel.classList.contains('fade-in')){
+        document.body.style.overflow='hidden';
+      } else {
+        document.body.style.overflow='';
+      }
+    }
+  });
+});
+
+// Login Panel close on outside click
+document.addEventListener('click',e=>{
+  if(loginPanel.classList.contains('fade-in') && !loginPanel.contains(e.target) && !Array.from(loginButtons).some(btn=>btn.contains(e.target))){
+    loginPanel.classList.remove('fade-in');
+    document.body.style.overflow='';
+  }
+});
+
+// Signup Panel close on outside click
+document.addEventListener('click',e=>{
+  if(signupPanel.classList.contains('fade-in') && !signupPanel.contains(e.target)){
+    signupPanel.classList.remove('fade-in');
+    document.body.style.overflow='';
+  }
+});
+
+// Switch between Login and Signup
+document.getElementById('showSignup').addEventListener('click',(e)=>{
+  e.stopPropagation();
+  loginPanel.classList.remove('fade-in');
+  signupPanel.classList.add('fade-in');
+  localStorage.setItem('lastAuthPanel', 'signup');
+});
+
+document.getElementById('showLogin').addEventListener('click',(e)=>{
+  e.stopPropagation();
+  signupPanel.classList.remove('fade-in');
+  loginPanel.classList.add('fade-in');
+  localStorage.setItem('lastAuthPanel', 'login');
+});
+
+// Authentication System
+function getUsers(){
+  const users = localStorage.getItem('musicmate_users');
+  return users ? JSON.parse(users) : [];
+}
+
+function saveUser(user){
+  const users = getUsers();
+  users.push(user);
+  localStorage.setItem('musicmate_users', JSON.stringify(users));
+}
+
+function setLoggedInUser(user){
+  localStorage.setItem('musicmate_logged_in', JSON.stringify(user));
+}
+
+// Login Submit
+document.getElementById('loginSubmit').addEventListener('click',()=>{
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  
+  if(!email || !password){
+    alert('Please fill in all fields');
+    return;
+  }
+  
+  const users = getUsers();
+  const user = users.find(u => u.email === email && u.password === password);
+  
+  if(user){
+    setLoggedInUser(user);
+    window.location.href = 'home.html';
+  } else {
+    alert('Invalid email or password');
+  }
+});
+
+// Signup Submit
+document.getElementById('signupSubmit').addEventListener('click',()=>{
+  const name = document.getElementById('signupName').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const password = document.getElementById('signupPassword').value;
+  
+  if(!name || !email || !password){
+    alert('Please fill in all fields');
+    return;
+  }
+  
+  // Check if email already exists
+  const users = getUsers();
+  if(users.find(u => u.email === email)){
+    alert('Email already registered');
+    return;
+  }
+  
+  const newUser = { name, email, password };
+  saveUser(newUser);
+  setLoggedInUser(newUser);
+  window.location.href = 'home.html';
+});
+
+// Scroll
+document.getElementById('scrollFeatures').addEventListener('click',()=>{document.getElementById('features').scrollIntoView({behavior:'smooth'});});
+
+// Tabs
+const tabs=document.querySelectorAll('.tabs button');
+const tabPanels=document.querySelectorAll('.tab-panel');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    tabPanels.forEach(p=>p.classList.add('hidden'));
+    document.getElementById(tab.dataset.tab+'Panel').classList.remove('hidden');
+  });
+});
+
+// Pomodoro
+let pomDuration=1500, pomRemaining=1500, pomInterval=null;
+const pomTime=document.getElementById('pomTime');
+const pomFill=document.getElementById('pomFill');
+const presetButtons=document.querySelectorAll('.preset-btn');
+
+function updatePomTime(){
+  const m=Math.floor(pomRemaining/60), s=pomRemaining%60;
+  pomTime.textContent=`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+  const percent=(pomDuration-pomRemaining)/pomDuration;
+  const size = percent * 100; // Scale from 0 to 100%
+  pomFill.style.width=size+'%';
+  pomFill.style.height=size+'%';
+  
+  // Add pulsing animation when fill reaches 95% or more
+  if(percent >= 0.95){
+    pomFill.style.animation='pomPulse 5s ease-in-out infinite';
+  } else {
+    pomFill.style.animation='none';
+  }
+}
+function startPom(){if(pomInterval)return;pomInterval=setInterval(()=>{if(pomRemaining>0){pomRemaining--;updatePomTime();}else{clearInterval(pomInterval);pomInterval=null;}},1000);}
+function pausePom(){if(pomInterval){clearInterval(pomInterval);pomInterval=null;}}
+function resetPom(){pomRemaining=pomDuration;updatePomTime();pausePom();}
+
+document.getElementById('startPom').addEventListener('click',startPom);
+document.getElementById('pausePom').addEventListener('click',pausePom);
+document.getElementById('resetPom').addEventListener('click',resetPom);
+
+// Preset timer buttons
+presetButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    presetButtons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const minutes=parseInt(btn.dataset.minutes);
+    pomDuration=minutes*60;
+    pomRemaining=pomDuration;
+    updatePomTime();
+    pausePom();
+  });
+});
+
+updatePomTime();
+
+// Events
+const eventList=document.getElementById('eventList');
+document.getElementById('addEvent').addEventListener('click',()=>{
+  const name=document.getElementById('eventName').value;
+  const url=document.getElementById('eventUrl').value;
+  if(name){const li=document.createElement('li');li.textContent=name+(url?` (Moodle URL: ${url})`:'');eventList.appendChild(li);
+  document.getElementById('eventName').value='';document.getElementById('eventUrl').value='';}
+});
+
+// Sidebar close on outside click
+toggleSidebar.addEventListener('click',(e)=>{
+  e.stopPropagation();
+  loginPanel.classList.remove('fade-in');
+  signupPanel.classList.remove('fade-in');
+  sidebar.classList.toggle('fade-in');
+  if(sidebar.classList.contains('fade-in')){
+    document.body.style.overflow='hidden';
+  } else {
+    document.body.style.overflow='';
+  }
+});
+document.addEventListener('click',e=>{
+  if(sidebar.classList.contains('fade-in') && !sidebar.contains(e.target) && !toggleSidebar.contains(e.target)){
+    sidebar.classList.remove('fade-in');document.body.style.overflow='';
+  }
+});
+
+// Settings close on outside click
+openSettingsSidebar.addEventListener('click',(e)=>{
+  e.stopPropagation();
+  settingsModal.classList.add('fade-in');
+  document.body.style.overflow='hidden';
+});
+document.addEventListener('click',e=>{
+  if(settingsModal.classList.contains('fade-in') && !settingsModal.querySelector('.modal-content').contains(e.target) && !openSettingsSidebar.contains(e.target)){
+    settingsModal.classList.remove('fade-in');document.body.style.overflow='';
+  }
+});
+
+// Hero Logo Animation
+let angle=0,direction=1;
+setInterval(()=>{
+  angle+=0.25*direction;
+  if(angle>5||angle<-5)direction*=-1;
+  musicLogo.style.transform=`translateY(-5px) rotate(${angle}deg)`;
+},20);
+</script>
 </body>
 </html>
