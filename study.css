@@ -1,124 +1,283 @@
 *{
-    margin: 0;  
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body{
-    border: 5px solid rgb(0, 0, 0);
-    margin-top: 70px;
-    background-color: rgb(196, 107, 180);
-    height: auto;
-    width: 100vw;
-  }
-  
-  .head{
-    background-color: rgb(26, 26, 26);
-    height:70px;
-    position:fixed;
-    top: 0;
-    left:0;
-    padding: 20px 50px;
-    width: 100%;
-    z-index: 100;
-    border: 5px solid rgb(205, 255, 214);
-    display:flex;
-    justify-content: space-between;
-    
-  }
-  
-  .logo  {
-    color: azure;
-    font-family: sans-serif;
-    font-size: 20px;
-    text-decoration: none;
-    font-weight: 700;
-    border: 5px solid white;
-    height: fit-content;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  }
- 
+body{
+  
+  margin-top: 70px;
+  background-color: #090324;
+  height: auto;
+  width: 100vw;
+}
 
-  .nav a{
-    position:relative;
-    text-decoration: none;
-    color: azure;
-    font-family: sans-serif;
-    font-size: 20px;
-    margin: 20px;
-    font-weight: 500;
-    height:fit-content;
-  }
+.head{
+  background-color: rgb(26, 26, 26);
+  height:70px;
+  position:fixed;
+  top: 0;
+  left:0;
+  padding: 20px 50px;
+  width: 100%;
+  z-index: 100;
+  display:flex;
+  justify-content: space-between;
+  
+}
+
+.logo  {
+  color: azure;
+  font-family: sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 5px solid white;
+  height: fit-content;
+
+}
+
+
+.nav a{
+  position:relative;
+  text-decoration: none;
+  color: azure;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin: 20px;
+  font-weight: 500;
+  height:fit-content;
+}
 
 .nav a::before {
-    content: '';
-    background: rgb(255, 196, 250);
-    position:absolute;
-    top:100%;
-    left:0;
-    width: 0;
-    height: 2px;
-    transition: .3s;
-  }
-  .nav a:hover::before {
-  
-    width: 100%;
-  }
-  
-  .block1{
-    border: 5px solid rgb(158, 157, 250);
-    height:20vh;
-    width:100;
-    font-family: sans-serif;
-    background-color: rgb(105, 51, 180);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px; 
-    border-radius: 10px;
-  }
- 
-  .block2{
-    border: 5px solid rgb(157, 250, 176);
-    height: 80vh;
-    background-color: rgb(176, 199, 191);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-   
-  }
-  
-  .block3 img{
-   width: 350px;
-   height:350px;
-   border: 5px solid rgb(1, 208, 255);
-   background-color: rgb(99, 167, 197);
-   border-radius: 20px;
-   margin-top: -120px;
-  }
- 
-
-  .block3{
-    margin:50px
-
-  }
-.player-wrapper{
-  /*border:5px solid black;*/
+  content: '';
+  background: rgb(255, 196, 250);
+  position:absolute;
+  top:100%;
+  left:0;
+  width: 0;
+  height: 2px;
+  transition: .3s;
 }
-.buttons{
+.nav a:hover::before {
+
+  width: 100%;
+}
+
+.block1{
+  position: relative;
+  height:20vh;
+  width:100;
+  font-family: sans-serif;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  margin-top: 20px;
+  justify-content: center;
+  font-size: 30px;
+  border-radius: 10px;
+}
+
+
+.block2{
+  
+  height: 80vh;
+  
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+ 
+}
+
+.block3 img{
+ width: 350px;
+ height:350px;
+ border: 5px solid rgb(1, 208, 255);
+
+ border-radius: 20px;
+ margin-top: -120px;
+}
+
+
+.block3{
+  margin:50px;
+}
+
+.buttons{
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+margin-top: 50px;
+}
+
+#play-pause{
+font-size: 50px;
+color: aliceblue;
+
 }
 
 .buttons button{
- width:50px;
- height:50px;
- background-color: transparent;
- border:none;
- font-size: 30px;
- color: aliceblue;
+width:50px;
+height:50px;
+background-color: transparent;
+border:none;
+font-size: 50px;
+color: aliceblue;
 }
+
+.liquid-bg {
+position: fixed;
+inset: 0;
+z-index: -1;
+overflow: hidden;
+filter: blur(80px); /* BLUR AMOUNT */
+}
+
+/* Shared blob styling */
+.blob {
+position: absolute;
+width: 500px;
+height: 500px;
+border-radius: 50%;
+mix-blend-mode: screen;
+opacity: 0.6;
+animation: float 18s infinite ease-in-out;
+}
+
+/* Colors for each blob */
+.b1 {
+background: #ed359a;
+top: -10%;
+left: -10%;
+}
+
+.b2 {
+background: #a7079c;
+top: 30%;
+left: 60%;
+animation-duration: 22s;
+}
+
+.b3 {
+background: #473670;
+top: 60%;
+left: 20%;
+animation-duration: 26s;
+}
+
+/* Floating animation */
+@keyframes float {
+0% { transform: translate(0, 0) scale(1); }
+33% { transform: translate(30%, -20%) scale(1.2); }
+66% { transform: translate(-20%, 30%) scale(0.9); }
+100% { transform: translate(0, 0) scale(1); }
+}
+
+
+#themeToggle {
+position:absolute;
+top:15px;
+right:20px;
+padding: 10px 20px;
+background-color: #ffffff;
+border: 2px solid #000;
+border-radius: 10px;
+font-size: 16px;
+cursor: pointer;
+transition: 0.3s ease;
+
+}
+
+#themeToggle:hover {
+background-color: #f0f0f0;
+}
+
+.light-mode body,
+body.light-mode {
+  background-color: #f5f5f5 !important;
+  color: #000 !important;
+}
+
+body.light-mode .study-header {
+  background-color: #fff !important;
+}
+
+body.light-mode .navbar {
+  background-color: #ffffff !important;
+}
+
+body.light-mode #themeToggle {
+  background-color: #000;
+  color: white;
+}
+
+
+.toggle-icon {
+position: absolute;
+top: 15px;
+right: 20px;
+width: 40px;
+height: 40px;
+cursor: pointer;
+background: transparent;
+border: none;
+}
+
+/* SUN (default / dark mode icon) */
+.toggle-icon::before {
+content: "";
+position: absolute;
+inset: 0;
+margin: auto;
+width: 22px;
+height: 22px;
+border: 3px solid rgb(0, 0, 0);
+border-radius: 50%;
+transition: all 0.4s ease;
+}
+
+/* Sun rays */
+.toggle-icon::after {
+content: "";
+position: absolute;
+inset: 0;
+margin: auto;
+width: 40px;
+height: 40px;
+background:
+    radial-gradient(circle, black 20%, transparent 21%) 0% 50%,
+    radial-gradient(circle, black 20%, transparent 21%) 50% 0%,
+    radial-gradient(circle, black 20%, transparent 21%) 100% 50%,
+    radial-gradient(circle, black 20%, transparent 21%) 50% 100%,
+    radial-gradient(circle, black 20%, transparent 21%) 15% 15%,
+    radial-gradient(circle, black 20%, transparent 21%) 85% 15%,
+    radial-gradient(circle, black 20%, transparent 21%) 15% 85%,
+    radial-gradient(circle, black 20%, transparent 21%) 85% 85%;
+background-size: 6px 6px;
+background-repeat: no-repeat;
+transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* 🌙 LIGHT MODE — Turn into a moon */
+body.light-mode .toggle-icon::before {
+border: none;
+width: 20px;
+height: 20px;
+background: rgb(0, 0, 0);
+border-radius: 50%;
+box-shadow: -10px 0 0 0 white; /* creates crescent */
+transform: translateX(5px);
+}
+
+/* Hide sun rays in moon mode */
+body.light-mode .toggle-icon::after {
+opacity: 0;
+transform: scale(0.7);
+}
+
+
+body:not(.light-mode) .text1{
+color: #ffffff;
+}
+
+
