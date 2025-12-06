@@ -12,11 +12,11 @@
 <body>
 
 
-<header class="head"> 
+<header class="head">
     <a href="home.html" class="logo">Music Mate</a>
    
-    <navbar class="nav"> 
-        <a href="home.html"> Home</a> 
+    <navbar class="nav">
+        <a href="home.html"> Home</a>
         <a href="study.html"> Study Mode</a>
         <a href="#"> Library</a>
         <a href="#"> About</a>
@@ -25,13 +25,16 @@
 </header>
 
 
-   <div class="block1"> 
+   <div class="block1">
         <h2 class="text1"> Study mode</h2>
+        <div class="toggle-wrapper">
+        <button id="themeToggle" class="toggle-icon"></button>
+      </div>
    </div>
+    
+<div class="block2">
 
-<div class="block2"> 
-
-        <div class="block3"> 
+        <div class="block3">
             <img id="cover" alt="Cover image" class="cover-img" />
         </div>
         
@@ -43,16 +46,20 @@
 
             <div class="buttons">
               <button id="prev">⏮</button>
-              <button id="play-pause">⏯</button>
-              <button id="pause"> </button>
+              <button id="play-pause">▶</button>
               <button id="next">⏭</button>
             </div>
         </div>
  </div>
 
-    
+ 
+ <div class="liquid-bg">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
 
-    </div>
+  
     
     <script>
       let songs = [];
@@ -105,10 +112,26 @@
       playPauseBtn.addEventListener("click", () => {
         if (player.paused) {
           player.play();
+          playPauseBtn.textContent = "⏸";
         } else {
           player.pause();
+          playPauseBtn.textContent = "▶";
         }
       });
+
+
+
+
+      const toggleBtn = document.getElementById("themeToggle");
+
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+});
+
+
+  
+
     </script>
 </body>
 </html>
+
