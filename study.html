@@ -12,17 +12,19 @@
 <body>
 
 
-<header class="head">
-    <a href="home.html" class="logo">Music Mate</a>
-   
-    <navbar class="nav">
-        <a href="home.html"> Home</a>
-        <a href="study.html"> Study Mode</a>
-        <a href="#"> Library</a>
-        <a href="#"> About</a>
-    </navbar>
-    
-</header>
+  <button id="menuToggle" class="menu-toggle">
+    ☰
+  </button>
+  
+  <aside class="sidebar" id="mainSidebar">
+    <nav class="menu-list">
+      <a href="home.html"> Home</a>
+      <a href="#library">Library</a>
+      <button id="openSettingsSidebar" class="sidebar-btn">Settings</button>
+      <a href="#about">About</a>
+    </nav>
+  </aside>
+
 
 
    <div class="block1">
@@ -36,6 +38,8 @@
 
         <div class="block3">
             <img id="cover" alt="Cover image" class="cover-img" />
+            <h2 id="song-title"></h2>
+            <p id="artist-name"></p>
         </div>
         
         <div class="player-wrapper">
@@ -51,7 +55,7 @@
             </div>
         </div>
  </div>
-
+ <script src="study.js"> </script>
  
  <div class="liquid-bg">
   <div class="blob b1"></div>
@@ -61,77 +65,7 @@
 
   
     
-    <script>
-      let songs = [];
-      let currentIndex = 0;
-
-      const cover = document.getElementById("cover");
-      const player = document.getElementById("player");
-      const prevBtn = document.getElementById("prev");
-      const nextBtn = document.getElementById("next");
-      const playPauseBtn = document.getElementById("play-pause");
-
-      function loadSong(index) {
-        const song = songs[index];
-        if (!song) return;
-
-        cover.src = song.cover;
-        player.src = song.file;
-
-        // try to play (may need a click first depending on browser)
-        player.play().catch((err) => {
-          console.log("Autoplay blocked until user interacts:", err);
-        });
-      }
-
-      // Fetch songs from your API
-      fetch("/api/songs")
-        .then((res) => res.json())
-        .then((data) => {
-          songs = data;
-          if (songs.length > 0) {
-            loadSong(0);
-          } else {
-            console.log("No songs returned from API");
-          }
-        })
-        .catch((err) => console.error("Error loading songs:", err));
-
-      prevBtn.addEventListener("click", () => {
-        if (!songs.length) return;
-        currentIndex = (currentIndex - 1 + songs.length) % songs.length;
-        loadSong(currentIndex);
-      });
-
-      nextBtn.addEventListener("click", () => {
-        if (!songs.length) return;
-        currentIndex = (currentIndex + 1) % songs.length;
-        loadSong(currentIndex);
-      });
-
-      playPauseBtn.addEventListener("click", () => {
-        if (player.paused) {
-          player.play();
-          playPauseBtn.textContent = "⏸";
-        } else {
-          player.pause();
-          playPauseBtn.textContent = "▶";
-        }
-      });
-
-
-
-
-      const toggleBtn = document.getElementById("themeToggle");
-
-toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-});
-
-
-  
-
-    </script>
+   
 </body>
 </html>
 
