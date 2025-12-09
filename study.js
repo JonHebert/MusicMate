@@ -1,8 +1,6 @@
-// ===== MUSIC PLAYER =====
 
-// Grab the elements that actually exist in your HTML
-const audio = document.getElementById("player");       // <audio id="player">
-const albumArt = document.getElementById("cover");     // <img id="cover">
+const audio = document.getElementById("player");       
+const albumArt = document.getElementById("cover");     
 const trackTitle = document.getElementById("song-title");
 const trackArtist = document.getElementById("artist-name");
 
@@ -13,7 +11,7 @@ const prevBtn = document.getElementById("prev");
 let currentIndex = 0;
 let isPlaying = false;
 
-// Your files are in the SAME folder as study.html/study.js
+
 const tracks = [
   {
     title: "Outgrown",
