@@ -4,339 +4,524 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Your Library</title>
+
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="library.css">
+
 <style>
-  /* ----- CARD SLIDE-UP ON SCROLL ----- */
-  .slide-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease-out;
-  }
-  .slide-up.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ----- CARD SLIDE-UP ON SCROLL ----- */
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
+}
+.slide-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  /* ----- CARD STYLING ----- */
-  .square-card {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 1/1; /* Keep card square */
-    transition: transform 0.3s ease;
-  }
-  .square-card:hover {
-    transform: scale(1.05);
-  }
+/* ----- CARD STYLING ----- */
+.square-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1/1;
+  /* Keep card square */
+  transition: transform 0.3s ease;
+}
+.square-card:hover {
+  transform: scale(1.05);
+}
 
-  /* Overlay */
-  .overlay {
-    position: absolute;
-    bottom: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.55);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1rem;
-    transition: bottom 0.35s ease;
-  }
-  .square-card:hover .overlay {
-    bottom: 0;
-  }
+/* Overlay */
+.overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  color: #C084FC;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  transition: bottom 0.35s ease;
+}
+.square-card:hover .overlay {
+  bottom: 0;
+}
 
-  /* Circular artist cards */
-  .artist-card {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    aspect-ratio: 1/1; /* keep perfect circle */
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .artist-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  .artist-card:hover {
-    transform: scale(1.05);
-  }
-  .artist-overlay {
-    position: absolute;
-    bottom: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.55);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: bottom 0.35s ease;
-    border-radius: 50%;
-  }
-  .artist-card:hover .artist-overlay {
-    bottom: 0;
-  }
+/* Circular artist cards */
+.artist-card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1/1;
+  /* keep perfect circle */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.artist-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.artist-card:hover {
+  transform: scale(1.05);
+}
 
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
-  }
+.artist-overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: bottom 0.35s ease;
+  border-radius: 50%;
+}
+.artist-card:hover .artist-overlay {
+  bottom: 0;
+}
 
-  /* Sticky nav */
-  .section-nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: white;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sticky nav */
+.section-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+ font-family: 'Poppins', sans-serif !important;
+}
+
+body, p, span, a, h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+}
+
+a:hover,
+.section-nav a:hover,
+.overlay,
+.artist-overlay {
+  color: #8530d5 !important;
+}
+
+body {
+  background-color: #0F0A1F !important;
+}
+
+.overlay,
+.artist-overlay {
+  background: rgba(32, 0, 70, 0.55) !important;
+}
+
+.square-card {
+  border-radius: 20px !important;
+}
+
+.artist-card img {
+  border: 3px solid #ffffff !important;
+}
+
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+html, body {
+  background: #C084FC !important;
+  color: #C084FC !important;
+}
+
+/* ----- CARD SLIDE-UP ON SCROLL ----- */
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
+}
+.slide-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----- CARD STYLING ----- */
+.square-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+  background: #ffffff;
+}
+.square-card:hover {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  transition: bottom 0.35s ease;
+}
+.square-card:hover .overlay {
+  bottom: 0;
+}
+
+.artist-card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background: #ffffff;
+}
+.artist-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.artist-card:hover {
+  transform: scale(1.05);
+}
+
+.artist-overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  color: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: bottom 0.35s ease;
+  border-radius: 50%;
+}
+.artist-card:hover .artist-overlay {
+  bottom: 0;
+}
+
+.section-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #C084FC !important;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.section-nav a {
+  margin: 0 12px;
+  font-weight: 600;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+.section-nav a:hover {
+  color: #C084FC;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background: #C084FC !important;
+}
 </style>
 </head>
 
 <body class="bg-gray-100">
+  <audio id="music-player" controls class="hidden"></audio>
+
 
 <!-- HEADER -->
-<header class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">Your Library</h1>
-    <input type="text" placeholder="Search..." class="border rounded-lg p-2 w-1/3" />
+<header class="bg-purple shadow p-4 flex justify-between items-center">
+  <h1 class="text-2xl font-bold font-sans"> Your Library</h1>
+  <input type="text" placeholder="Search..." class="border rounded-lg p-2 w-1/3" />
 </header>
 
 <!-- CATEGORY NAVIGATION -->
 <div class="section-nav flex justify-center gap-6 text-lg font-semibold">
-    <a href="#recent" class="hover:text-green-600">Recently Added</a>
-    <a href="#albums" class="hover:text-green-600">Albums</a>
-    <a href="#artists" class="hover:text-green-600">Artists</a>
-    <a href="#songs" class="hover:text-green-600">Songs</a>
+  <a href="#recent" class="hover:text-green-600">Recently Added</a>
+  <a href="#albums" class="hover:text-green-600">Albums</a>
+  <a href="#artists" class="hover:text-green-600">Artists</a>
+  <a href="#songs" class="hover:text-green-600">Songs</a>
 </div>
 
 <main class="p-6 space-y-16">
 
-  <!-- SECTION 1: RECENTLY ADDED -->
-  <section id="recent">
-    <h2 class="text-xl font-semibold mb-4">Recently Added</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/1200x/eb/20/4b/eb204beb8c59f688f5489b7861fcb88e.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">House of Balloons</h3>
-          <p>The Weeknd</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/b6/dd/de/b6dddea00fd03ee47a3be52ff0db97de.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">XSCAPE</h3>
-          <p>Michael Jackson</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/8e/ef/ee/8eefee24e90e17284b1231c761641e22.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">channel ORANGE</h3>
-          <p>Frank Ocean</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/08/f8/45/08f8455a767b5f7f06cebdc594a00f69.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Planet Her</h3>
-          <p>Doja Cat</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/03/95/51/0395512aef5749d823b18216b2c82591.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Wasteland</h3>
-          <p>Brent Faiyaz</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/eb/b2/19/ebb2194ad7b15cd0719f07fe83f91900.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Ctrl</h3>
-          <p>SZA</p>
-        </div>
-      </div>
+<!-- SECTION 1: RECENTLY ADDED -->
+<section id="recent">
+  <h2 class="text-xl font-semibold mb-4">Recently Added</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+  <div class="square-card rounded-2xl slide-up z-10 relative">
+  <img src="https://i.pinimg.com/1200x/eb/20/4b/eb204beb8c59f688f5489b7861fcb88e.jpg" 
+       class="w-full h-full object-cover"/> 
+  <div class="overlay rounded-2xl p-2">
+    <h3 class="font-semibold">House of Balloons</h3>
+    <p>The Weeknd</p>
+    <div class="video-wrapper" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+      <iframe 
+          src="https://www.youtube.com/embed/tgbNymZ7vqY" 
+          style="visibility:hidden" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+      </iframe>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- SECTION 2: ALBUMS -->
-  <section id="albums">
-    <h2 class="text-xl font-semibold mb-4">Albums</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/98/55/0a/98550a5c0af4e1cb5309d5ca6c8ca53a.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">If Looks Could Kill</h3>
-          <p>Destroy Lonely</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/1200x/05/77/89/057789ca70919bf848f0c18c77837327.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Brand New Eyes</h3>
-          <p>Paramore</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/ae/32/d1/ae32d1790e3c15988d4799db9b2748ea.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">TYLA +</h3>
-          <p>Tyla</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/1200x/6f/aa/be/6faabede758acefac57bb78a14e52110.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Confession (Expanded Edition)</h3>
-          <p>Usher</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Video115/v4/e8/72/63/e87263fe-b6dc-7eec-b5f7-b2569f7f5a69/Job0a9c1389-953b-4126-a3a9-b4761409cc92-117373630-PreviewImage_preview_image_nonvideo_sdr-Time1626382226212.png/592x592bb.webp" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">RY RY WORLD</h3>
-          <p>Mariah the Scientist</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Video116/v4/5f/66/f2/5f66f2f5-e72c-2282-1b41-f92b9eca09e6/Jobda3e0dd7-ddae-4ac3-a41c-45bdf27c9cea-157787334-PreviewImage_preview_image_nonvideo_sdr-Time1698376992669.png/592x592bb.webp" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">1989 (Taylor's Verison) Deluxe</h3>
-          <p>Taylor Swift</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SECTION 3: ARTISTS -->
-  <section id="artists">
-    <h2 class="text-xl font-semibold mb-4">Artists</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-      <div class="artist-card slide-up">
-        <img src="https://i.pinimg.com/1200x/e4/af/bb/e4afbbb23ce54f58e4e1c058d280e63f.jpg"/>
-        <div class="artist-overlay">
-          <h3 class="font-semibold">The Weeknd</h3>
-        </div>
-      </div>
-      <div class="artist-card slide-up">
-        <img src="https://i.pinimg.com/736x/1a/d9/8c/1ad98c7851a56ed38c50d61b016ae44c.jpg"/>
-        <div class="artist-overlay">
-          <h3 class="font-semibold">Michael Jackson</h3>
-        </div>
-      </div>
-      <div class="artist-card slide-up">
-        <img src="https://i.pinimg.com/736x/fa/fe/fd/fafefdfc15dd5480daea745cc86f037b.jpg"/>
-        <div class="artist-overlay">
-          <h3 class="font-semibold">Frank Ocean</h3>
-        </div>
-      </div>
-      <div class="artist-card slide-up">
-        <img src="https://i.pinimg.com/1200x/2e/6b/aa/2e6baaf450b913af2626f424464721d0.jpg"/>
-        <div class="artist-overlay">
-          <h3 class="font-semibold">Doja Cat</h3>
-        </div>
-      </div>
-      <div class="artist-card slide-up">
-        <img src="https://i.pinimg.com/736x/d2/06/7a/d2067af4058d5d4d4d74a37fad2a11c7.jpg"/>
-        <div class="artist-overlay">
-          <h3 class="font-semibold">Brent Faiyaz</h3>
-        </div>
-      </div>
-      <div class="artist-card slide-up">
-        <img src="https://i.pinimg.com/736x/7a/33/25/7a3325066305f3946bb9c003776f29a9.jpg"/>
-        <div class="artist-overlay">
-          <h3 class="font-semibold">SZA</h3>
-        </div>
-      </div>
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/b6/dd/de/b6dddea00fd03ee47a3be52ff0db97de.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">XSCAPE</h3>
+        <p>Michael Jackson</p>
+      </div>ss
     </div>
-  </section>
 
-  <!-- SECTION 4: SONGS -->
-  <section id="songs">
-    <h2 class="text-xl font-semibold mb-4">Songs</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/1200x/eb/20/4b/eb204beb8c59f688f5489b7861fcb88e.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">High for This</h3>
-          <p>The Weeknd</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/b6/dd/de/b6dddea00fd03ee47a3be52ff0db97de.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Love Never Felt So Good</h3>
-          <p>Michael Jackson</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/8e/ef/ee/8eefee24e90e17284b1231c761641e22.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Thinkin Bout You</h3>
-          <p>Frank Ocean</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/08/f8/45/08f8455a767b5f7f06cebdc594a00f69.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Kiss Me More</h3>
-          <p>Doja Cat</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/03/95/51/0395512aef5749d823b18216b2c82591.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Wasting Time</h3>
-          <p>Brent Faiyaz</p>
-        </div>
-      </div>
-      <div class="square-card rounded-2xl slide-up">
-        <img src="https://i.pinimg.com/736x/eb/b2/19/ebb2194ad7b15cd0719f07fe83f91900.jpg" class="w-full h-full object-cover"/>
-        <div class="overlay rounded-2xl">
-          <h3 class="font-semibold">Love Galore</h3>
-          <p>SZA</p>
-        </div>
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/8e/ef/ee/8eefee24e90e17284b1231c761641e22.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">channel ORANGE</h3>
+        <p>Frank Ocean</p>
       </div>
     </div>
-  </section>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/08/f8/45/08f8455a767b5f7f06cebdc594a00f69.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Planet Her</h3>
+        <p>Doja Cat</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/03/95/51/0395512aef5749d823b18216b2c82591.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Wasteland</h3>
+        <p>Brent Faiyaz</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/eb/b2/19/ebb2194ad7b15cd0719f07fe83f91900.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Ctrl</h3>
+        <p>SZA</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 2: ALBUMS -->
+<section id="albums">
+  <h2 class="text-xl font-semibold mb-4">Albums</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/98/55/0a/98550a5c0af4e1cb5309d5ca6c8ca53a.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">If Looks Could Kill</h3>
+        <p>Destroy Lonely</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/1200x/05/77/89/057789ca70919bf848f0c18c77837327.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Brand New Eyes</h3>
+        <p>Paramore</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/ae/32/d1/ae32d1790e3c15988d4799db9b2748ea.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">TYLA +</h3>
+        <p>Tyla</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/1200x/6f/aa/be/6faabede758acefac57bb78a14e52110.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Confession (Expanded Edition)</h3>
+        <p>Usher</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://is1-ssl.mzstatic.com/image/thumb/Video115/v4/e8/72/63/e87263fe-b6dc-7eec-b5f7-b2569f7f5a69/Job0a9c1389-953b-4126-a3a9-b4761409cc92-117373630-PreviewImage_preview_image_nonvideo_sdr-Time1626382226212.png/592x592bb.webp" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">RY RY WORLD</h3>
+        <p>Mariah the Scientist</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://is1-ssl.mzstatic.com/image/thumb/Video116/v4/5f/66/f2/5f66f2f5-e72c-2282-1b41-f92b9eca09e6/Jobda3e0dd7-ddae-4ac3-a41c-45bdf27c9cea-157787334-PreviewImage_preview_image_nonvideo_sdr-Time1698376992669.png/592x592bb.webp" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">1989 (Taylor's Verison) Deluxe</h3>
+        <p>Taylor Swift</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 3: ARTISTS -->
+<section id="artists">
+  <h2 class="text-xl font-semibold mb-4">Artists</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+
+    <div class="artist-card slide-up">
+      <img src="https://i.pinimg.com/1200x/e4/af/bb/e4afbbb23ce54f58e4e1c058d280e63f.jpg"/>
+      <div class="artist-overlay">
+        <h3 class="font-semibold">The Weeknd</h3>
+      </div>
+    </div>
+
+    <div class="artist-card slide-up">
+      <img src="https://i.pinimg.com/736x/1a/d9/8c/1ad98c7851a56ed38c50d61b016ae44c.jpg"/>
+      <div class="artist-overlay">
+        <h3 class="font-semibold">Michael Jackson</h3>
+      </div>
+    </div>
+
+    <div class="artist-card slide-up">
+      <img src="https://i.pinimg.com/736x/fa/fe/fd/fafefdfc15dd5480daea745cc86f037b.jpg"/>
+      <div class="artist-overlay">
+        <h3 class="font-semibold">Frank Ocean</h3>
+      </div>
+    </div>
+
+    <div class="artist-card slide-up">
+      <img src="https://i.pinimg.com/1200x/2e/6b/aa/2e6baaf450b913af2626f424464721d0.jpg"/>
+      <div class="artist-overlay">
+        <h3 class="font-semibold">Doja Cat</h3>
+      </div>
+    </div>
+
+    <div class="artist-card slide-up">
+      <img src="https://i.pinimg.com/736x/d2/06/7a/d2067af4058d5d4d4d74a37fad2a11c7.jpg"/>
+      <div class="artist-overlay">
+        <h3 class="font-semibold">Brent Faiyaz</h3>
+      </div>
+    </div>
+
+    <div class="artist-card slide-up">
+      <img src="https://i.pinimg.com/736x/7a/33/25/7a3325066305f3946bb9c003776f29a9.jpg"/>
+      <div class="artist-overlay">
+        <h3 class="font-semibold">SZA</h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 4: SONGS -->
+<section id="songs">
+  <h2 class="text-xl font-semibold mb-4">Songs</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/1200x/eb/20/4b/eb204beb8c59f688f5489b7861fcb88e.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">High for This</h3>
+        <p>The Weeknd</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/b6/dd/de/b6dddea00fd03ee47a3be52ff0db97de.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Love Never Felt So Good</h3>
+        <p>Michael Jackson</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/8e/ef/ee/8eefee24e90e17284b1231c761641e22.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Thinkin Bout You</h3>
+        <p>Frank Ocean</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/08/f8/45/08f8455a767b5f7f06cebdc594a00f69.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Kiss Me More</h3>
+        <p>Doja Cat</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/03/95/51/0395512aef5749d823b18216b2c82591.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Wasting Time</h3>
+        <p>Brent Faiyaz</p>
+      </div>
+    </div>
+
+    <div class="square-card rounded-2xl slide-up">
+      <img src="https://i.pinimg.com/736x/eb/b2/19/ebb2194ad7b15cd0719f07fe83f91900.jpg" class="w-full h-full object-cover"/>
+      <div class="overlay rounded-2xl">
+        <h3 class="font-semibold">Love Galore</h3>
+        <p>SZA</p>
+      </div>
+    </div>
+
+  </div>
+  <audio id="player" style="display:none;"></audio>
+</section>
 
 </main>
 
 <script>
-  // Animate cards on scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-      }
+// Animate cards on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('show');
+  });
+});
+document.querySelectorAll('.slide-up').forEach(card => observer.observe(card));
+
+// Search filter
+document.querySelector('input[type="text"]').addEventListener('input', function () {
+  const q = this.value.toLowerCase();
+  document.querySelectorAll('main section div.grid > div').forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(q) ? '' : 'none';
+  });
+    const player = document.getElementById('youtube-player');
+  
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.slide-up').forEach(card => {
-    observer.observe(card);
-  });
-
-  // Search filter
-  const searchInput = document.querySelector('input[type="text"]');
-  searchInput.addEventListener('input', function() {
-      const query = this.value.toLowerCase();
-      document.querySelectorAll('main section div.grid > div').forEach(card => {
-          const text = card.innerText.toLowerCase();
-          card.style.display = text.includes(query) ? '' : 'none';
-      });
-  });
 </script>
 
-</body>
-</html>
